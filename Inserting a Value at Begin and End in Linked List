@@ -1,0 +1,56 @@
+#include <bits/stdc++.h>
+using namespace std;
+class Node{
+    public:
+    int key;
+    Node* next;
+};
+Node* newNode(int data){
+    Node* n=new Node();
+    n->key=data;
+    n->next=NULL;
+    return n;
+}
+Node* a(int data,Node* head){
+    Node* nn=newNode(data);
+    if(head==NULL){
+        head=nn;
+    }
+    else{
+        nn->next=head;
+        head=nn;
+    }
+    return head;
+}
+Node* b(int data,Node* head){
+    Node* nn=newNode(data);
+    if(head==NULL){
+        head=nn;
+    }
+    else{
+        Node* temp=head;
+        while(temp->next!=NULL){
+            temp=temp->next;
+        }
+        temp->next=nn;
+    }
+    return head;
+}
+Node* c(Node* head){
+    Node* temp=head;
+    while(temp!=NULL){
+        cout<<temp->key<<"->";
+        temp=temp->next;
+    }
+    cout<<"NULL";
+}
+int main() {
+    Node* head=NULL;
+    head=a(30,head);
+    head=a(20,head);
+    head=a(10,head);
+    head=a(5,head);
+    head=b(40,head);
+    head=c(head);
+    
+}
